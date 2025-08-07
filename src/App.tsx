@@ -15,7 +15,7 @@ function App() {
       >
         add number
       </button>
-      <div className="bg-blue-200">the number is : {num}</div>
+      <div className="bg-blue-200">the number is : {num +1}</div>
     </div>
   );
 }
