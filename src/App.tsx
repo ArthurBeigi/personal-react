@@ -1,21 +1,12 @@
-import { useState } from "react";
 import "./App.css";
+import { LoginForm } from "./components/login-form";
 
 function App() {
-  const [num, setNum] = useState<number>(0);
-
   return (
-    <div className="w-full h-screen space-y-2 flex flex-col justify-center items-center">
-      <button
-        onClick={() => {
-          setNum(num + 1);
-          console.log();
-        }}
-        className="w-40 h-20 rounded-xl border-2 border-red-200 bg-gray-200 transition-none focus:border-[3px] focus:border-pink-300 hover:border-green-200"
-      >
-        add number
-      </button>
-      <div className="bg-blue-200">the number is : {num +1}</div>
+    <div className="bg-muted flex min-h-svh flex-col items-center justify-center p-6 md:p-10">
+      <div className="w-full max-w-sm md:max-w-3xl">
+        <LoginForm dir="rtl"/>
+      </div>
     </div>
   );
 }
