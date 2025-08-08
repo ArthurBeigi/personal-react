@@ -1,8 +1,9 @@
-import { cn } from "../lib/utils"
-import { Button } from "./ui/button"
-import { Card, CardContent } from "./ui/card"
-import { Input } from "./ui/input"
-import { Label } from "./ui/label"
+import { ArrowRightIcon, UserIcon } from "@phosphor-icons/react";
+import { cn } from "../lib/utils";
+import { Button } from "./ui/button";
+import { Card, CardContent } from "./ui/card";
+import { Input } from "./ui/input";
+import { Label } from "./ui/label";
 
 export function LoginForm({
   className,
@@ -12,37 +13,42 @@ export function LoginForm({
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card className="overflow-hidden">
         <CardContent className="grid p-0 md:grid-cols-2">
-          <form className="p-6 md:p-8">
+          <form className="p-6 flex flex-col md:p-16">
             <div className="flex flex-col gap-6">
               <div className="flex flex-col items-center text-center">
                 <h1 className="text-2xl font-bold">ورود / ثبت نام</h1>
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="email">نام کاربری / ایمیل</Label>
-                <Input
-                className="rounded-r-none focus-visible:border-0"
-                  id="email"
-                  type="email"
-                  placeholder=""
-                  required
-                />
+                <div className="flex focus-within:outline-none hover:border focus-within:ring-1 focus-within:ring-ring rounded-md border border-input bg-transparent">
+                  <div className="flex justify-center mr-2 items-center">
+                    <UserIcon size={28} />
+                  </div>
+                  <Input
+                    className={
+                      "rounded-none border-0 shadow-none focus:border-r-0 focus-visible:border-r-0  focus-visible:ring-0"
+                    }
+                    id="email"
+                    type="email"
+                    placeholder=""
+                    required
+                  />
+                </div>
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center">
                   <Label htmlFor="password">Password</Label>
-                  <a
-                    href="#"
-                    className="ml-auto rtl:ml-0 rtl:mr-auto text-sm underline-offset-2 hover:underline"
-                  >
-                    Forgot your password?
-                  </a>
                 </div>
                 <Input id="password" type="password" required />
               </div>
-              <Button type="submit" className="w-full">
-                Login
+              <Button
+                type="submit"
+                className="w-1/2 mx-auto rounded-full bg-white border-black flex border hover:bg-gray-100 text-black"
+              >
+                <ArrowRightIcon className="" size={40} />
+                <p className="w-full text-[16px]">ورود</p>
               </Button>
-              <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
+              {/* <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
                 <span className="relative z-10 bg-background px-2 text-muted-foreground">
                   Or continue with
                 </span>
@@ -75,28 +81,24 @@ export function LoginForm({
                   </svg>
                   <span className="sr-only">Login with Meta</span>
                 </Button>
-              </div>
-              <div className="text-center text-sm">
-                Don&apos;t have an account?{" "}
-                <a href="#" className="underline underline-offset-4">
-                  Sign up
-                </a>
+              </div> */}
+              <div className="flex h-fit text-sm">
+                <a href="#" className="text-sky-600 text-[12px] ml-auto">فراموشی رمز</a>
+                <a href="#" className="text-sky-600 text-[12px]">ثبت نام</a>
               </div>
             </div>
+            <div></div> {/*این قسمت که برای قوانینه رو کامل کن مهدی*/}
           </form>
           <div className="relative hidden bg-muted md:block">
+            {/* use the z index in talwind for the gradian */}
             <img
-              src="/placeholder.svg"
-              alt="Image"
+              src="/images/Doctor1.png"
+              alt="The docter"
               className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
             />
           </div>
         </CardContent>
       </Card>
-      <div className="text-balance text-center text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary">
-        By clicking continue, you agree to our <a href="#">Terms of Service</a>{" "}
-        and <a href="#">Privacy Policy</a>.
-      </div>
     </div>
-  )
+  );
 }
