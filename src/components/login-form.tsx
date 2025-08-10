@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
+import { LockSimpleIcon } from "@phosphor-icons/react/dist/ssr/LockSimple";
 
 export function LoginForm({
   className,
@@ -16,9 +17,9 @@ export function LoginForm({
           <form className="p-6 flex flex-col md:p-16">
             <div className="flex flex-col gap-6">
               <div className="flex flex-col items-center text-center">
-                <h1 className="text-2xl font-bold">ورود / ثبت نام</h1>
+                <h1 className="text-2xl font-bold mb-[25px]">ورود / ثبت نام</h1>
               </div>
-              <div className="grid gap-2">
+              <div className="grid gap-2 space-y-1 mb-[25px]">
                 <Label htmlFor="email">نام کاربری / ایمیل</Label>
                 <div className="flex focus-within:outline-none hover:border focus-within:ring-1 focus-within:ring-ring rounded-md border border-input bg-transparent">
                   <div className="flex justify-center mr-2 items-center">
@@ -35,11 +36,24 @@ export function LoginForm({
                   />
                 </div>
               </div>
-              <div className="grid gap-2">
-                <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
+
+              <div className="grid gap-2 space-y-1 mb-[25px]">
+                <Label htmlFor="password">رمز عبور</Label>
+                <div className="flex focus-within:outline-none hover:border focus-within:ring-1 focus-within:ring-ring rounded-md border border-input bg-transparent">
+                  <div className="flex justify-center mr-2 items-center">
+                    <div className="flex items-center"></div>
+                    <LockSimpleIcon size={28} />
+                  </div>
+                  <Input
+                    className={
+                      "rounded-none border-0 shadow-none focus:border-r-0 focus-visible:border-r-0  focus-visible:ring-0"
+                    }
+                    id="password"
+                    type="password"
+                    placeholder=""
+                    required
+                  />
                 </div>
-                <Input id="password" type="password" required />
               </div>
               <Button
                 type="submit"
@@ -83,13 +97,23 @@ export function LoginForm({
                 </Button>
               </div> */}
               <div className="flex h-fit text-sm">
-                <a href="#" className="text-sky-600 text-[12px] ml-auto">فراموشی رمز</a>
-                <a href="#" className="text-sky-600 text-[12px]">ثبت نام</a>
+                <a href="#" className="text-sky-600 text-[12px] ml-auto">
+                  فراموشی رمز
+                </a>
+                <a href="#" className="text-sky-600 text-[12px]">
+                  ثبت نام
+                </a>
               </div>
             </div>
-            <div></div> {/*این قسمت که برای قوانینه رو کامل کن مهدی*/}
+            <div className="flex justify-around ltr text-gray-600 text-[14px] font-family: sourcesanspro; italic">
+              <a href="#">Copyrigt2025Fenix. All Rights Reserved</a>
+              <a href="#">site map</a>
+              <a href="#">privicy tools</a>
+              <a href="#">terms & conditions</a>
+            </div>
           </form>
           <div className="relative hidden bg-muted md:block">
+            <div className="absolute left-[15px] top-[125px] w-[350px] h-[350px] bg-gradient-to-b from-cyan-700 via-indigo-500 to-teal-700 opacity-50 rounded-[15px] overflow-hidden"></div>
             {/* use the z index in talwind for the gradian */}
             <img
               src="/images/Doctor1.png"
