@@ -5,11 +5,20 @@ import { Card, CardContent } from "./ui/card";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { LockSimpleIcon } from "@phosphor-icons/react/dist/ssr/LockSimple";
+import { Navigate, useNavigate } from "react-router-dom";
 
-export function LoginForm({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+export function LoginPage() {
+  return (
+    <div className="bg-muted flex h-screen min-h-svh flex-col items-center justify-center p-6 md:p-10">
+      <div className="w-full max-w-sm md:max-w-3xl ">
+        <LoginForm dir="rtl" />
+      </div>
+    </div>
+  );
+}
+
+function LoginForm({ className, ...props }: React.ComponentProps<"div">) {
+  const navigate = useNavigate();
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card className="overflow-hidden">
@@ -19,7 +28,7 @@ export function LoginForm({
               <div className="flex flex-col items-center text-center">
                 <h1 className="text-2xl font-bold mb-[25px]">ورود / ثبت نام</h1>
               </div>
-              <div className="grid gap-2 space-y-1 mb-[25px]">
+              <div className="grid gap-2 space-y-1 bg-creamwhite mb-[25px]">
                 <Label htmlFor="email">نام کاربری / ایمیل</Label>
                 <div className="flex focus-within:outline-none hover:border focus-within:ring-1 focus-within:ring-ring rounded-md border border-input bg-transparent">
                   <div className="flex justify-center mr-2 items-center">
@@ -37,7 +46,7 @@ export function LoginForm({
                 </div>
               </div>
 
-              <div className="grid gap-2 space-y-1 mb-[25px]">
+              <div className="grid gap-2 space-y-1 bg-creamwhite mb-[25px]">
                 <Label htmlFor="password">رمز عبور</Label>
                 <div className="flex focus-within:outline-none hover:border focus-within:ring-1 focus-within:ring-ring rounded-md border border-input bg-transparent">
                   <div className="flex justify-center mr-2 items-center">
@@ -57,9 +66,9 @@ export function LoginForm({
               </div>
               <Button
                 type="submit"
-                className="w-1/2 mx-auto rounded-full bg-white border-black flex border hover:bg-gray-100 text-black"
+                className="w-1/2 mx-auto rounded-full bg-creamwhite border-black flex border hover:bg-gray-100 text-black"
               >
-                <ArrowRightIcon className="" size={40} />
+                <ArrowRightIcon className="" size={30} />
                 <p className="w-full text-[16px]">ورود</p>
               </Button>
               {/* <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
@@ -97,23 +106,20 @@ export function LoginForm({
                 </Button>
               </div> */}
               <div className="flex h-fit text-sm">
-                <a href="#" className="text-sky-600 text-[12px] ml-auto">
-                  فراموشی رمز
-                </a>
-                <a href="#" className="text-sky-600 text-[12px]">
+                <a className="text-sky-600 text-[12px] ml-auto">فراموشی رمز</a>
+                <button
+                  onClick={() => {
+                   navigate("/auth/signup")
+                  }}
+                  className="text-sky-600 text-[12px]"
+                >
                   ثبت نام
-                </a>
+                </button>
               </div>
             </div>
-            <div className="flex justify-around ltr text-gray-600 text-[14px] font-family: sourcesanspro; italic">
-              <a href="#">Copyrigt2025Fenix. All Rights Reserved</a>
-              <a href="#">site map</a>
-              <a href="#">privicy tools</a>
-              <a href="#">terms & conditions</a>
-            </div>
           </form>
-          <div className="relative hidden bg-muted md:block">
-            <div className="absolute left-[15px] top-[125px] w-[350px] h-[350px] bg-gradient-to-b from-cyan-700 via-indigo-500 to-teal-700 opacity-50 rounded-[15px] overflow-hidden"></div>
+          <div className="relative hidden md:block">
+            <div className="absolute left-[15px] top-[125px] w-[350px] h-[350px] bg-gradient-to-b from-cyan-700 via-indigo-500 to-teal-700 opacity-50 rounded-[15px] overflow-hidden" />
             {/* use the z index in talwind for the gradian */}
             <img
               src="/images/Doctor1.png"
@@ -123,6 +129,15 @@ export function LoginForm({
           </div>
         </CardContent>
       </Card>
+      <div
+        dir="ltr"
+        className="relative [&>*]:text-xs -top-12 flex  justify-around  text-gray-600 text-[14px] font-sourcesanspro italic"
+      >
+        <a href="#">Copyrigt2025Fenix. All Rights Reserved</a>
+        <a href="#">site map</a>
+        <a href="#">privicy tools</a>
+        <a href="#">terms & conditions</a>
+      </div>
     </div>
   );
 }

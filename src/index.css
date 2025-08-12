@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .border-dotted-wide {
+    border-top: 2px dotted;
+    border-color: currentColor;
+    border-image: repeating-linear-gradient(
+      to right,
+      currentColor 0,
+      currentColor 2px,
+      transparent 2px,
+      transparent 8px
+    ) 1;
+  }
+}
+
+
+
 @layer base {
   :root {
     --background: 0 0% 100%;
