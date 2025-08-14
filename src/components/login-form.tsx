@@ -5,7 +5,7 @@ import { Card, CardContent } from "./ui/card";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { LockSimpleIcon } from "@phosphor-icons/react/dist/ssr/LockSimple";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export function LoginPage() {
   return (
@@ -120,7 +120,6 @@ function LoginForm({ className, ...props }: React.ComponentProps<"div">) {
           </form>
           <div className="relative hidden md:block">
             <div className="absolute left-[15px] top-[125px] w-[350px] h-[350px] bg-gradient-to-b from-cyan-700 via-indigo-500 to-teal-700 opacity-50 rounded-[15px] overflow-hidden" />
-            {/* use the z index in talwind for the gradian */}
             <img
               src="/images/Doctor1.png"
               alt="The docter"
