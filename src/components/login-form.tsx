@@ -18,7 +18,6 @@ export function LoginPage() {
 }
 
 function LoginForm({ className, ...props }: React.ComponentProps<"div">) {
-  const navigate = useNavigate();
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card className="overflow-hidden">
@@ -107,14 +106,7 @@ function LoginForm({ className, ...props }: React.ComponentProps<"div">) {
               </div> */}
               <div className="flex h-fit text-sm">
                 <a className="text-sky-600 text-[12px] ml-auto">فراموشی رمز</a>
-                <button
-                  onClick={() => {
-                   navigate("/auth/signup")
-                  }}
-                  className="text-sky-600 text-[12px]"
-                >
-                  ثبت نام
-                </button>
+                <a href="/auth/signup" className="text-sky-600 text-[12px]">ثبت نام</a>
               </div>
             </div>
           </form>

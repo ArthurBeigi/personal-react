@@ -3,7 +3,6 @@ import "./App.css";
 import { LoginPage } from "./components/login-form";
 import { NotFoundPage } from "./components/404";
 import { SignUpPage } from "./components/SignUpPage";
-import React, { useState, ChangeEvent } from "./components/SignUpPage";
 
 
 function App() {
