@@ -5,7 +5,7 @@ import { Card, CardContent } from "./ui/card";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { LockSimpleIcon } from "@phosphor-icons/react/dist/ssr/LockSimple";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 export function LoginPage() {
   return (

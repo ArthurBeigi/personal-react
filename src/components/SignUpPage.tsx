@@ -75,7 +75,16 @@ export function SignUpForm({
                   <Calendar22 />
                 </>
               )}
-              {step === 2 && <></>}
+              {step === 2 && <>
+                                <div className="flex flex-col items-center text-center">
+                    <h1 className="text-2xl font-bold mb-[10px]">
+                      اطلاعات شخصی
+                    </h1>
+                    <p className="text-muted-foreground text-balance mb-[25px]">
+                      لطفا اطلاعات هویتی خود را وارد کنید
+                    </p>
+                  </div>
+              </>}
               {step === 3 && <></>}
               {step === 4 && <></>}
 
