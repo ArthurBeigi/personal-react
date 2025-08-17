@@ -1,4 +1,4 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 import { LoginPage } from "./components/login-form";
 import { NotFoundPage } from "./components/404";
@@ -10,6 +10,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="*" element={<NotFoundPage />} />
+        <Route path="/" element={<Navigate to="/auth/signin"/>} />
         <Route path="/auth/signin" Component={LoginPage} />
         <Route path="auth/signUp" Component={SignUpPage} />
       </Routes>

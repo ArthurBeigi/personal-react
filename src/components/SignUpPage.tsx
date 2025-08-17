@@ -1,4 +1,13 @@
-import { ArrowRightIcon } from "@phosphor-icons/react";
+import {
+  ArrowRightIcon,
+  City,
+  CityIcon,
+  EnvelopeIcon,
+  HouseIcon,
+  MapPinLine,
+  MapPinLineIcon,
+  PhoneIcon,
+} from "@phosphor-icons/react";
 import { cn } from "../lib/utils";
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
@@ -9,6 +18,9 @@ import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 import { Calendar22 } from "./ui/DatePicker";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "./ui/input-otp";
+import { LockSimpleIcon } from "@phosphor-icons/react/dist/ssr";
+import { Textarea } from "./ui/textarea";
 
 export const SignUpPage = () => {
   return (
@@ -27,6 +39,18 @@ export function SignUpForm({
   const [step, setStep] = useState<1 | 2 | 3 | 4>(1);
   type Step = 1 | 2 | 3 | 4;
   const navigate = useNavigate();
+
+  const getImageSrc = () => {
+    if (step == 1) {
+      return "/images/Doctor2.png";
+    } else if (step == 2) {
+      return "/images/Doctor3.png";
+    } else if (step == 3) {
+      return "/images/Doctor4.png";
+    } else {
+      return "";
+    }
+  };
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card className="overflow-hidden p-0">
@@ -75,11 +99,137 @@ export function SignUpForm({
                   <Calendar22 />
                 </>
               )}
-              {step === 2 && <>
-              <button>سلام داش حسن</button>
-              <p>چطوری جون دل</p>
-              </>}
-              {step === 3 && <></>}
+              {step === 2 && (
+                <>
+                  <div className="grid gap-2 space-y-1 bg-creamwhite mb-[25px] w-full">
+                    <Label htmlFor="phone Numer">شماره همراه</Label>
+                    <div className="flex focus-within:outline-none hover:border focus-within:ring-1 focus-within:ring-ring rounded-md border border-input bg-transparent">
+                      <div className="flex justify-center mr-2 items-center">
+                        <PhoneIcon size={28} />
+                      </div>
+                      <Input
+                      dir="rtl"
+                        className="rounded-none border-0 shadow-none focus:border-r-0 focus-visible:border-r-0 focus-visible:ring-0"
+                        id="phone Number"
+                        type="tel"
+                        placeholder="9891212345678+"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="grid gap-2 space-y-1 bg-creamwhite mb-[25px] w-full">
+                    <Label htmlFor="email">ایمیل</Label>
+                    <div className="flex focus-within:outline-none hover:border focus-within:ring-1 focus-within:ring-ring rounded-md border border-input bg-transparent">
+                      <div className="flex justify-center mr-2 items-center">
+                        <EnvelopeIcon size={28} />
+                      </div>
+                      <Input
+                        className="rounded-none border-0 shadow-none focus:border-r-0 focus-visible:border-r-0 focus-visible:ring-0"
+                        id="email"
+                        type="email"
+                        placeholder="Examole@gmail.com"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="flex gap-4 mb-[25px] w-full">
+                    <div className="grid gap-2 space-y-1 bg-creamwhite w-[240px]">
+                      <Label htmlFor="province">استان</Label>
+                      <div className="flex focus-within:outline-none hover:border focus-within:ring-1 focus-within:ring-ring rounded-md border border-input bg-transparent">
+                        <div className="flex justify-center mr-2 items-center">
+                          <MapPinLineIcon size={28} />
+                        </div>
+                        <Input
+                          className="rounded-none border-0 shadow-none focus:border-r-0 focus-visible:border-r-0 focus-visible:ring-0"
+                          id="province"
+                          type="text"
+                          placeholder="تهران"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid gap-2 space-y-1 bg-creamwhite w-[240px]">
+                      <Label htmlFor="city">شهرستان</Label>
+                      <div className="flex focus-within:outline-none hover:border focus-within:ring-1 focus-within:ring-ring rounded-md border border-input bg-transparent">
+                        <div className="flex justify-center mr-2 items-center">
+                          <CityIcon size={28} />
+                        </div>
+                        <Input
+                          className="rounded-none border-0 shadow-none focus:border-r-0 focus-visible:border-r-0 focus-visible:ring-0"
+                          id="city"
+                          type="text"
+                          placeholder="شهریار"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid gap-2 space-y-1 bg-creamwhite mb-[25px] w-full">
+                    <Label htmlFor="Address">آدرس</Label>
+                    <div className="flex focus-within:outline-none hover:border focus-within:ring-1 focus-within:ring-ring rounded-md border border-input bg-transparent">
+                      <div className="flex  justify-center mr-2 mt-2">
+                        <HouseIcon size={28} />
+                      </div>
+                      <Textarea
+                        className="rounded-none border-0 shadow-none focus:border-r-0 focus-visible:border-r-0 focus-visible:ring-0"
+                        id="Address"
+                        placeholder="سهیلی نژاد پ 32 واحد 19"
+                        required
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
+              {step === 3 && (
+                <div className="w-full flex flex-col">
+                  <div className="mx-auto w-fit">
+                    <img
+                      className="w-[400px]"
+                      src="/images/NumberAuth.png"
+                      alt="Number Authentication"
+                    />
+                  </div>
+
+                  <div className="flex flex-col items-center text-center">
+                    <h1 className="text-2xl font-bold mb-[10px]">
+                      تایید شماره موبایل
+                    </h1>
+                    <p className="text-muted-foreground text-[10px] text-balance mb-[25px]">
+                      لطفا کد پنج رقمی ارسال شده به شماره همراه خود را در فیلد
+                      پایین وارد نمایید
+                    </p>
+                  </div>
+
+                  <div dir="ltr" className="w-fit mb-6 mx-auto">
+                    <InputOTP maxLength={5}>
+                      <InputOTPGroup>
+                        <InputOTPSlot className="bg-blue-300" index={0} />
+                      </InputOTPGroup>
+                      <InputOTPGroup>
+                        <InputOTPSlot className="bg-blue-300" index={1} />
+                      </InputOTPGroup>
+                      <InputOTPGroup>
+                        <InputOTPSlot className="bg-blue-300" index={2} />
+                      </InputOTPGroup>
+                      <InputOTPGroup>
+                        <InputOTPSlot className="bg-blue-300" index={3} />
+                      </InputOTPGroup>
+                      <InputOTPGroup>
+                        <InputOTPSlot className="bg-blue-300" index={4} />
+                      </InputOTPGroup>
+                    </InputOTP>
+                  </div>
+
+                  <p className=" w-fit mx-auto">
+                    هنوز کدی دریافت نکردید؟
+                    <button className="text-blue-500 mb-5 font-bold text-sm">
+                      ارسال مجدد
+                    </button>
+                  </p>
+                </div>
+              )}
               {step === 4 && <></>}
 
               <Button
@@ -114,7 +264,7 @@ export function SignUpForm({
           <div className="relative hidden md:block">
             <div className="absolute left-[15px] top-[45px] w-[350px] h-[350px] bg-gradient-to-b from-cyan-700 via-indigo-500 to-teal-700 opacity-50 rounded-[15px] overflow-hidden" />
             <img
-              src="/images/Doctor2.png"
+              src={getImageSrc()}
               alt="The docter"
               className="absolute inset-0 h-full w-full object-cover  dark:brightness-[0.2] dark:grayscale"
             />

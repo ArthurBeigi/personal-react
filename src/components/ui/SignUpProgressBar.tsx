@@ -38,11 +38,11 @@ export const SignUpProgressBar = ({ step }: IStep) => {
           4
         </div>
       </div>
-      <div className="bg-blue-50 mt-1 h-5">
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
+      <div className="   [&>*]:text-xs  [&>*]:text-blue-500 md:px-32 [&>*]:mx-auto grid grid-cols-4 mt-1 h-5">
+        <p>اطلاعات شخصی</p>
+        <p>اطلاعات تماس</p>
+        <p>تایید اطلاعات</p>
+        <p>تایید هویت</p>
       </div>
     </div>
   );

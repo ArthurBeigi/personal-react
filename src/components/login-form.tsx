@@ -114,7 +114,7 @@ function LoginForm({ className, ...props }: React.ComponentProps<"div">) {
             <div className="absolute left-[15px] top-[125px] w-[350px] h-[350px] bg-gradient-to-b from-cyan-700 via-indigo-500 to-teal-700 opacity-50 rounded-[15px] overflow-hidden" />
             <img
               src="/images/Doctor1.png"
-              alt="The docter"
+              alt="The doctor"
               className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
             />
           </div>
