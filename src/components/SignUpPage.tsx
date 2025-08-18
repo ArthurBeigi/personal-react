@@ -1,10 +1,10 @@
 import {
   ArrowRightIcon,
-  City,
   CityIcon,
+  CloudArrowUpIcon,
   EnvelopeIcon,
+  FingerprintIcon,
   HouseIcon,
-  MapPinLine,
   MapPinLineIcon,
   PhoneIcon,
 } from "@phosphor-icons/react";
@@ -19,8 +19,9 @@ import { Calendar22 } from "./ui/DatePicker";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "./ui/input-otp";
-import { LockSimpleIcon } from "@phosphor-icons/react/dist/ssr";
+// import { LockSimpleIcon } from "@phosphor-icons/react";
 import { Textarea } from "./ui/textarea";
+import { Calendar2 } from "./ui/Expiredate";
 
 export const SignUpPage = () => {
   return (
@@ -108,7 +109,7 @@ export function SignUpForm({
                         <PhoneIcon size={28} />
                       </div>
                       <Input
-                      dir="rtl"
+                        dir="rtl"
                         className="rounded-none border-0 shadow-none focus:border-r-0 focus-visible:border-r-0 focus-visible:ring-0"
                         id="phone Number"
                         type="tel"
@@ -230,7 +231,58 @@ export function SignUpForm({
                   </p>
                 </div>
               )}
-              {step === 4 && <></>}
+              {step === 4 && (
+                <>
+                  <div className="flex flex-col items-center text-center">
+                    <h1 className="text-2xl font-bold mb-[10px]">احراز هویت</h1>
+                    <p className="text-muted-foreground text-balance mb-[25px] text-sm text-gray-500">
+                      به ما دسترسی بدهید که از اطلاعات شما استفاده کنیم
+                    </p>
+                  </div>
+
+                  <div className="grid gap-2 space-y-1 bg-creamwhite mb-[25px] w-full">
+                    <Label htmlFor="Number">کد شناسایی</Label>
+                    <div className="flex focus-within:outline-none hover:border focus-within:ring-1 focus-within:ring-ring rounded-md border border-input bg-transparent">
+                      <div className="flex justify-center mr-2 items-center">
+                        <FingerprintIcon size={26} />
+                      </div>
+                      <Input
+                        dir="rtl"
+                        className="rounded-none border-0 shadow-none focus:border-r-0 focus-visible:border-r-0 focus-visible:ring-0"
+                        id="Number"
+                        type="Number"
+                        placeholder="12-3872990"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <Calendar2 />
+
+                  <div className="mb-[10px] mt-[5px] flex items-center justify-center w-full">
+                    <label
+                      htmlFor="dropzone-file"
+                      className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500"
+                    >
+                      <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                        <CloudArrowUpIcon size={28} />
+
+                        <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                          <span className="font-semibold">Click to upload</span>{" "}
+                          or drag and drop
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">
+                          SVG, PNG, JPG or GIF (MAX. 800x400px)
+                        </p>
+                      </div>
+                      <input
+                        id="dropzone-file"
+                        type="file"
+                        className="hidden"
+                      />
+                    </label>
+                  </div>
+                </>
+              )}
 
               <Button
                 type="submit"
