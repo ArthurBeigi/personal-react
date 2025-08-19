@@ -14,7 +14,7 @@ export function Calendar22() {
   const [date, setDate] = React.useState<Date | undefined>(undefined)
 
   return (
-    <div className="flex flex-col  mb-6 gap-3">
+    <div className=" bg-creamwhite flex flex-col  mb-6 gap-3">
       <Label htmlFor="date" className="px-1">
        تاریخ تولد
       </Label>
@@ -23,7 +23,7 @@ export function Calendar22() {
           <Button
             variant="outline"
             id="date"
-            className="w-48 justify-between font-normal"
+            className=" bg-creamwhite w-48 justify-between font-normal"
           >
             {date ? date.toLocaleDateString() : "1/3/2025"}
             <ChevronDownIcon />
