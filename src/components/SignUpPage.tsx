@@ -49,7 +49,7 @@ export function SignUpForm({
     } else if (step == 3) {
       return "/images/Doctor4.png";
     } else {
-      return "";
+      return "/images/authentication.jpg";
     }
   };
   return (
@@ -133,8 +133,8 @@ export function SignUpForm({
                       />
                     </div>
                   </div>
-                  <div className="flex gap-4 mb-[25px] w-full">
-                    <div className="grid gap-2 space-y-1 bg-creamwhite w-[240px]">
+                  <div className="flex flex-col md:flex-row gap-4 mb-[25px] w-full">
+                    <div className="grid gap-2 space-y-1 bg-creamwhite w-full md:w-[240px]">
                       <Label htmlFor="province">استان</Label>
                       <div className="flex focus-within:outline-none hover:border focus-within:ring-1 focus-within:ring-ring rounded-md border border-input bg-transparent">
                         <div className="flex justify-center mr-2 items-center">
@@ -149,8 +149,7 @@ export function SignUpForm({
                         />
                       </div>
                     </div>
-
-                    <div className="grid gap-2 space-y-1 bg-creamwhite w-[240px]">
+                    <div className="grid gap-2 space-y-1 bg-creamwhite w-full md:w-[240px]">
                       <Label htmlFor="city">شهرستان</Label>
                       <div className="flex focus-within:outline-none hover:border focus-within:ring-1 focus-within:ring-ring rounded-md border border-input bg-transparent">
                         <div className="flex justify-center mr-2 items-center">
@@ -166,7 +165,6 @@ export function SignUpForm({
                       </div>
                     </div>
                   </div>
-
                   <div className="grid gap-2 space-y-1 bg-creamwhite mb-[25px] w-full">
                     <Label htmlFor="Address">آدرس</Label>
                     <div className="flex focus-within:outline-none hover:border focus-within:ring-1 focus-within:ring-ring rounded-md border border-input bg-transparent">
@@ -261,17 +259,17 @@ export function SignUpForm({
                   <div className="mb-[10px] mt-[5px] flex items-center justify-center w-full">
                     <label
                       htmlFor="dropzone-file"
-                      className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-creamwhite dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500"
+                      className="flex flex-col items-center justify-center w-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-creamwhite dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500"
                     >
                       <div className="flex flex-col items-center justify-center pt-5 pb-6">
                         <CloudArrowUpIcon size={28} />
 
                         <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                          <span className="font-semibold">Click to upload</span>{" "}
+                          <span className="font-semibold">Click to upload</span>
                           or drag and drop
                         </p>
                         <p className="text-xs text-gray-500 dark:text-gray-400">
-                         PNG, JPG (MAX. 800x400px)
+                          PNG, JPG (MAX. 800x400px)
                         </p>
                       </div>
                       <input
@@ -300,7 +298,8 @@ export function SignUpForm({
                 <p className="w-full text-[16px]">ادامه</p>
               </Button>
               <button
-                onClick={() => {
+                onClick={(e) => {
+                   e.preventDefault()
                   if (step !== 1) {
                     setStep((step - 1) as Step);
                   } else {
@@ -313,13 +312,49 @@ export function SignUpForm({
               </button>
             </div>
           </form>
-          <div className="relative hidden md:block">
-            <div className="absolute left-[15px] top-[45px] w-[350px] h-[350px] bg-gradient-to-b from-cyan-700 via-indigo-500 to-teal-700 opacity-50 rounded-[15px] overflow-hidden" />
-            <img
-              src={getImageSrc()}
-              alt="The docter"
-              className="absolute inset-0 h-full w-full object-cover  dark:brightness-[0.2] dark:grayscale"
-            />
+          <div
+            className={` ${
+              step == 4 ? "order-first" : ""
+            } relative hidden md:block`}
+          >
+            {step == 4 ? (
+              <div className="w-full p-8 h-full">
+                <div className="w-full px-6 [&>p]:font-bold [&>p]:text-black h-full bg-gradient-to-b  from-cyan-700/50 via-indigo-500/50 to-teal-700/50 rounded-[15px] overflow-hidden">
+                  <p className="mt-6">
+                    لطفا از یک مدرک موثق بین المللی برای احراز هویت استفاده
+                    کنید، شامل:
+                  </p>
+                  <p className="mt-4">
+                    - گواهینامه
+                    <br />
+                    - کارت ملی <br />
+                    - مجوز نظام پزشکی
+                    <br />_ شناسنامه
+                  </p>
+                  <img
+                    src={getImageSrc()}
+                    alt="The docter"
+                    className="mx-auto mt-3 inset-0 w-44 border border-black rounded-2xl object-cover opacity-100"
+                  />
+                  <p className="!text-blue-500/70">
+                    نکته:
+                    <br />
+                    مدرک شناسایی خود را اسکن کنید و با فرمت های (JPG/JEPG) در
+                    فیلد موردنظر ارسال کنید. سپس روی گزینه ادامه کلیک کنید تا به
+                    صفحه بعدی منتقل شوید
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <>
+                <div className="absolute left-[15px] top-[45px] w-[350px] h-[350px] bg-gradient-to-b from-cyan-700 via-indigo-500 to-teal-700 opacity-50 rounded-[15px] overflow-hidden" />
+                <img
+                  src={getImageSrc()}
+                  alt="The docter"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+              </>
+            )}
           </div>
         </CardContent>
       </Card>
